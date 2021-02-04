@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Row, Col } from "antd";
+import { Row, Col, Input } from "antd";
 import "antd/dist/antd.css";
 
 const Posts = ({ getResourse }) => {
@@ -17,7 +17,7 @@ const Posts = ({ getResourse }) => {
     
 
     return (
-      <Col span={8} key={id + Date.now()}>
+      <Col span={8} key={id}>
         <p>{id}</p>
         <p>{title}</p>
         <p>{body}</p>
@@ -48,13 +48,11 @@ const Posts = ({ getResourse }) => {
   const submitHandler = (event) => {
     fetchFunct();
     event.preventDefault();
-    console.log(posts);
   };
 
   useEffect(() => {
     getResourse("posts")
       .then((array) => {
-        console.log(array);
         setPosts(array);
       })
       .catch();
@@ -62,11 +60,13 @@ const Posts = ({ getResourse }) => {
   
 
   return (
-    <div>
+    <div style={{ marginLeft: 16 }}>
       <div>
         <form onSubmit={submitHandler}>
           <div>
-            <input
+            <Input
+              required
+              style={{ marginBottom: 16, marginLeft: 16, width: "30%" }}
               type="text"
               name="userId"
               value={userId}
@@ -74,7 +74,9 @@ const Posts = ({ getResourse }) => {
             />
           </div>
           <div>
-            <input
+            <Input
+              required
+              style={{ marginBottom: 16, marginLeft: 16, width: "30%" }}
               type="text"
               name="title"
               value={title}
@@ -82,14 +84,23 @@ const Posts = ({ getResourse }) => {
             />
           </div>
           <div>
-            <input
+            <Input
+              required
+              style={{ marginBottom: 16, marginLeft: 16, width: "30%" }}
               type="text"
               name="body"
               value={body}
               onChange={(e) => setBody(e.target.value)}
             />
           </div>
-          <button type="submit"> submit</button>
+          <button
+            size="large"
+            style={{ marginBottom: 16, marginLeft: 16 }}
+            shape="round"
+            type="submit"
+          >
+            submit
+          </button>
         </form>
       </div>
       <Row justify="center">{posts.map((user) => newPosts(user))}</Row>

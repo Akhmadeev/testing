@@ -5,13 +5,12 @@ import "antd/dist/antd.css";
 const Albums = ({ getResourse }) => {
   const [albums, setAlbums] = useState([]);
   const [photos, setPhotos] = useState([]);
-  const [number, setNumber] = useState(2);
+  const [number, setNumber] = useState(1);
 
   const { SubMenu } = Menu;
 
   const handleAlbum = (e) => {
     setNumber(e.key)
-    console.log(e.key)
   }
 
   const newAlbum = (album) => {
@@ -52,7 +51,6 @@ const Albums = ({ getResourse }) => {
     getResourse("photos")
       .then((array) => {
         const newArr = array.filter((el) => el.albumId == number);
-        console.log(newArr);
         setPhotos(newArr);
       })
       .catch();
