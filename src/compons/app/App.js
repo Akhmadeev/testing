@@ -1,18 +1,17 @@
 import React from "react";
-import Albums from "../albums/albums"
+import Albums from "../albums/albums";
 import Users from "../Users/users";
 import Posts from "../posts/posts";
 import { Tabs } from "antd";
 import "antd/dist/antd.css";
 
 const App = () => {
+  const getResourse = async (query) => {
+    const res = await fetch(`https://jsonplaceholder.typicode.com/${query}`);
+    const result = await res.json();
+    return result;
+  };
 
- const getResourse = async (query) => {
-   const res = await fetch(`https://jsonplaceholder.typicode.com/${query}`);
-   const result = await res.json();
-   return result;
- };
-  
   const { TabPane } = Tabs;
 
   return (
@@ -30,6 +29,6 @@ const App = () => {
       </Tabs>
     </div>
   );
-}
+};
 
 export default App;

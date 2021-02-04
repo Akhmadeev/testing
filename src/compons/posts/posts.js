@@ -7,14 +7,11 @@ const Posts = ({ getResourse }) => {
   const [userId, setUserID] = useState("");
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
-  
-  
 
   const newPosts = (post) => {
     const body = post.body;
     const title = post.title;
     const id = post.id;
-    
 
     return (
       <Col span={8} key={id}>
@@ -57,7 +54,6 @@ const Posts = ({ getResourse }) => {
       })
       .catch();
   }, []);
-  
 
   return (
     <div style={{ marginLeft: 16 }}>

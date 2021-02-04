@@ -10,8 +10,8 @@ const Albums = ({ getResourse }) => {
   const { SubMenu } = Menu;
 
   const handleAlbum = (e) => {
-    setNumber(e.key)
-  }
+    setNumber(e.key);
+  };
 
   const newAlbum = (album) => {
     const title = album.title;
@@ -23,28 +23,28 @@ const Albums = ({ getResourse }) => {
       </Menu.Item>
     );
   };
-   const newPhoto = (photo) => {
-     const title = photo.title;
-     const id = photo.id;
-     const img = photo.thumbnailUrl;
+  const newPhoto = (photo) => {
+    const title = photo.title;
+    const id = photo.id;
+    const img = photo.thumbnailUrl;
 
-     return (
-       <Col key={img} span={10}>
-         <Card style={{ marginBottom: 16, marginLeft: 16, height: 300 }}>
-           <p>{id}</p>
-           <img src={img}/>
-           <p>{title}</p>
-         </Card>
-       </Col>
-     );
-   };
+    return (
+      <Col key={img} span={10}>
+        <Card style={{ marginBottom: 16, marginLeft: 16, height: 300 }}>
+          <p>{id}</p>
+          <img src={img} />
+          <p>{title}</p>
+        </Card>
+      </Col>
+    );
+  };
 
   useEffect(() => {
     getResourse("albums")
       .then((array) => {
         setAlbums(array);
       })
-      .catch()
+      .catch();
   }, []);
 
   useEffect(() => {
@@ -79,7 +79,4 @@ const Albums = ({ getResourse }) => {
   );
 };
 
-      
-
 export default Albums;
-
