@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Menu, Card, Row, Col } from "antd";
+import { Menu, Card, Row, Col, Typography } from "antd";
 import "antd/dist/antd.css";
 
 const Albums = ({ getResourse }) => {
@@ -8,6 +8,8 @@ const Albums = ({ getResourse }) => {
   const [number, setNumber] = useState(1);
 
   const { SubMenu } = Menu;
+  const { Text } = Typography;
+  const { Meta } = Card;
 
   const handleAlbum = (e) => {
     setNumber(e.key);
@@ -19,7 +21,7 @@ const Albums = ({ getResourse }) => {
 
     return (
       <Menu.Item key={id} onClick={(e) => handleAlbum(e)}>
-        {id}.{title}
+        {`${id}. ${title}`}
       </Menu.Item>
     );
   };
@@ -29,12 +31,15 @@ const Albums = ({ getResourse }) => {
     const img = photo.thumbnailUrl;
 
     return (
-      <Col key={img} span={10}>
-        <Card style={{ marginBottom: 16, marginLeft: 16, height: 300 }}>
-          <p>{id}</p>
-          <img src={img} />
-          <p>{title}</p>
+      <Col key={img} span={5}>
+        <Card
+          hoverable
+          style={{ width: 240, marginBottom: 16, marginLeft: 16, height: 400 }}
+          cover={<img alt="example" src={img} />}
+        >
+          <Meta title={`${id}.`} description={title} />
         </Card>
+        
       </Col>
     );
   };

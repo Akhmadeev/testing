@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { Row, Col, Input } from "antd";
+import "./posts.css"
+import { Card, Row, Col, Input, Typography } from "antd";
 import "antd/dist/antd.css";
 
 const Posts = ({ getResourse }) => {
@@ -8,6 +9,8 @@ const Posts = ({ getResourse }) => {
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
 
+  const { Text } = Typography;
+
   const newPosts = (post) => {
     const body = post.body;
     const title = post.title;
@@ -15,9 +18,12 @@ const Posts = ({ getResourse }) => {
 
     return (
       <Col span={8} key={id}>
-        <p>{id}</p>
-        <p>{title}</p>
-        <p>{body}</p>
+        <Card
+          title={`${id}. ${title}`}
+          style={{ marginBottom: 16, marginLeft: 16, height: 200 }}
+        >
+          <Text maxLength={15}>{body}</Text>
+        </Card>
       </Col>
     );
   };
@@ -61,8 +67,9 @@ const Posts = ({ getResourse }) => {
         <form onSubmit={submitHandler}>
           <div>
             <Input
+              placeholder="input userId"
               required
-              style={{ marginBottom: 16, marginLeft: 16, width: "30%" }}
+              style={{ marginBottom: 16, marginLeft: 16, width: "20%" }}
               type="text"
               name="userId"
               value={userId}
@@ -71,8 +78,9 @@ const Posts = ({ getResourse }) => {
           </div>
           <div>
             <Input
+              placeholder="input title"
               required
-              style={{ marginBottom: 16, marginLeft: 16, width: "30%" }}
+              style={{ marginBottom: 16, marginLeft: 16, width: "20%" }}
               type="text"
               name="title"
               value={title}
@@ -81,19 +89,22 @@ const Posts = ({ getResourse }) => {
           </div>
           <div>
             <Input
+              placeholder="input body"
               required
-              style={{ marginBottom: 16, marginLeft: 16, width: "30%" }}
+              style={{ marginBottom: 16, marginLeft: 16, width: "20%" }}
               type="text"
               name="body"
               value={body}
               onChange={(e) => setBody(e.target.value)}
             />
           </div>
+
           <button
             size="large"
             style={{ marginBottom: 16, marginLeft: 16 }}
             shape="round"
             type="submit"
+            className="btn"
           >
             submit
           </button>
