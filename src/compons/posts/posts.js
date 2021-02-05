@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import "./posts.css"
+import "./posts.css";
 import { Card, Row, Col, Input, Typography } from "antd";
 import "antd/dist/antd.css";
 
@@ -106,7 +106,7 @@ const Posts = ({ getResourse }) => {
             type="submit"
             className="btn"
           >
-            submit
+            Submit
           </button>
         </form>
       </div>

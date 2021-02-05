@@ -5,7 +5,7 @@ import "antd/dist/antd.css";
 const Users = ({ getResourse }) => {
   const [users, setUsers] = useState([]);
 
-  const { Text} = Typography;
+  const { Text } = Typography;
 
   const newUser = (post) => {
     const name = post.name;
@@ -34,10 +34,7 @@ const Users = ({ getResourse }) => {
 
   useEffect(() => {
     getResourse("users")
-      .then((array) => {
-        setUsers(array);
-        console.log(array)
-      })
+      .then((array) => setUsers(array))
       .catch();
   }, []);
 

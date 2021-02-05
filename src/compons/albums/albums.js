@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Menu, Card, Row, Col, Typography } from "antd";
+import { Menu, Card, Row, Col } from "antd";
 import "antd/dist/antd.css";
 
 const Albums = ({ getResourse }) => {
@@ -8,7 +8,6 @@ const Albums = ({ getResourse }) => {
   const [number, setNumber] = useState(1);
 
   const { SubMenu } = Menu;
-  const { Text } = Typography;
   const { Meta } = Card;
 
   const handleAlbum = (e) => {
@@ -39,17 +38,14 @@ const Albums = ({ getResourse }) => {
         >
           <Meta title={`${id}.`} description={title} />
         </Card>
-        
       </Col>
     );
   };
 
   useEffect(() => {
     getResourse("albums")
-      .then((array) => {
-        setAlbums(array);
-      })
-      .catch();
+      .then((array) => setAlbums(array))
+      .catch((err) => console.error(err));
   }, []);
 
   useEffect(() => {
@@ -58,7 +54,7 @@ const Albums = ({ getResourse }) => {
         const newArr = array.filter((el) => el.albumId == number);
         setPhotos(newArr);
       })
-      .catch();
+      .catch((err) => console.error(err));
   }, [number]);
 
   return (
