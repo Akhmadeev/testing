@@ -51,7 +51,7 @@ const Albums = ({ getResourse }) => {
   useEffect(() => {
     getResourse("photos")
       .then((array) => {
-        const newArr = array.filter((el) => el.albumId == number);
+        const newArr = array.filter((el) => el.albumId === number);
         setPhotos(newArr);
       })
       .catch((err) => console.error(err));

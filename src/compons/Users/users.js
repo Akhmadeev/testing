@@ -36,7 +36,7 @@ const Users = ({ getResourse }) => {
     getResourse("users")
       .then((array) => setUsers(array))
       .catch();
-  }, []);
+  }, [users]);
 
   return (
     <div>
